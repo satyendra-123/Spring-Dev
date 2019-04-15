@@ -1,0 +1,60 @@
+spring:
+    profiles:
+        active: local
+---
+spring:
+   profiles: local
+   datasource:
+          driverClassName: com.mysql.cj.jdbc.Driver
+          url: jdbc:mysql://localhost/productInventory
+          username: root
+          password: #####
+   jpa:
+      hibernate:
+          ddl-auto: update
+      properties:        
+          hibernate.dialect: org.hibernate.dialect.MySQL5InnoDBDialect
+          show_sql: true
+          hibernate.globally_quoted_identifiers: true
+   kafka:
+        producer:
+          bootstrap-servers: localhost:9092
+          key-deserializer: org.apache.kafka.common.serialization.StringDeserializer
+          value-deserializer: org.apache.kafka.common.serialization.StringDeserializer
+        consumer:
+          bootstrap-servers: localhost:9092
+          group-id: myGroup
+          key-deserializer: org.apache.kafka.common.serialization.StringDeserializer
+          value-deserializer: org.apache.kafka.common.serialization.StringDeserializer        
+api:
+   user: YXBpdXNlcg==
+   password: c2F0eWEzNDU=                  
+server.port: 8092
+---
+spring:
+   profiles: test
+   datasource:
+          driverClassName: com.mysql.cj.jdbc.Driver
+          url: jdbc:mysql://localhost/productInventory
+          username: root
+          password: kotiys
+   jpa:
+      hibernate:
+          ddl-auto: update
+      properties:        
+          hibernate.dialect: org.hibernate.dialect.MySQL5InnoDBDialect
+          show_sql: true
+          hibernate.globally_quoted_identifiers: true
+   kafka:
+        producer:
+          bootstrap-servers: localhost:9092
+          key-deserializer: org.apache.kafka.common.serialization.StringDeserializer
+          value-deserializer: org.apache.kafka.common.serialization.StringDeserializer
+        consumer:
+          bootstrap-servers: localhost:9092
+          group-id: myGroup
+          key-deserializer: org.apache.kafka.common.serialization.StringDeserializer
+          value-deserializer: org.apache.kafka.common.serialization.StringDeserializer        
+api:
+   user: YXBpdXNlcg==
+   password: c2F0eWEzNDU=
